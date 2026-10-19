@@ -1,0 +1,25 @@
+import { z } from 'zod';
+
+const envSchema = z.object({
+  PORT: z.coerce.number().int().positive().default(3000),
+  DATABASE_URL: z
+    .string({ error: 'variável obrigatória ausente' })
+    .regex(/^postgres(ql)?:\/\//, 'deve começar com postgresql://'),
+});
+
+export type Env = z.infer<typeof envSchema>;
+
+export class InvalidEnvError extends Error {}
+
+export function parseEnv(source: NodeJS.ProcessEnv): Env {
+  const result = envSchema.safeParse(source);
+  if (!result.success) {
+    const lines = result.error.issues.map(
+      (issue) => `  - ${issue.path.join('.')}: ${issue.message}`,
+    );
+    throw new InvalidEnvError(
+      `Configuração inválida. Corrija as variáveis de ambiente (veja .env.example):\n${lines.join('\n')}`,
+    );
+  }
+  return result.data;
+}
