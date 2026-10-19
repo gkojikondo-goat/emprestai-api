@@ -15,7 +15,8 @@ O andar zero do front está no repositório emprestai-front.
   obrigatória ou sem banco, ela falha na subida com mensagem clara
 - AZ-03 · existe uma migration do Prisma, versionada e aplicável do zero,
   que cria uma tabela mínima e habilita RLS nela por SQL bruto
-- AZ-04 · GET /v1/health devolve 200 com o status da conexão com o banco
+- AZ-04 · GET /v1/health devolve 200 com o status da conexão com o banco;
+  com o banco fora do ar, devolve 503 no formato RFC 9457 (ADR-001)
 - AZ-05 · a API aceita requisições do origem do front (allowlist de CORS) e
   recusa as de outra origem
 - AZ-06 · um comando roda os testes, com pelo menos um teste de API sobre
@@ -36,7 +37,5 @@ geração do cliente OpenAPI. Nenhuma tabela de domínio além da mínima de AZ-
 
 ## Não decidido ainda
 
-- Nome das variáveis de ambiente.
 - Nome dos módulos dentro de src/modules/. O ADR-001 já decide que é por
   domínio e que as camadas são Controller → Service → Repository.
-- Região do projeto Supabase (ver "O que este ADR NÃO decide" no ADR-002).
