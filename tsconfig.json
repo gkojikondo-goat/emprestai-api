@@ -10,7 +10,7 @@
     "removeComments": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "incremental": true,
+    "incremental": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
