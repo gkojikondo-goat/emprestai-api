@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { configureApp } from './app.setup';
 import { Env, InvalidEnvError, parseEnv } from './config/env';
 
 function loadConfig(): Env {
@@ -21,6 +22,7 @@ function loadConfig(): Env {
 async function bootstrap() {
   const env = loadConfig();
   const app = await NestFactory.create(AppModule);
+  configureApp(app);
   await app.listen(env.PORT);
 }
 
