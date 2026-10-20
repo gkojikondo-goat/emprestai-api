@@ -21,10 +21,7 @@ src/
   prisma/                 PrismaService
   modules/
     health/               controller, service, repository
-api/
-  index.ts                handler da Vercel (instância cacheada)
 test/
-vercel.json
 ```
 
 Por que essa e não outra: `src/modules/<dominio>/` e Controller → Service →
@@ -87,11 +84,11 @@ e `api/` são escolha nossa, e só precisam virar ADR se ficarem caros de mudar.
       verifico assim: `git check-ignore .env` imprime `.env`; `git ls-files`
       mostra `.env.example` e nenhum outro arquivo `.env*`
 
-- [ ] T10 · Handler serverless para a Vercel (instância do Nest cacheada) e
-      `vercel.json`
+- [x] T10 · Handler serverless para a Vercel — dispensado pelo ADR-005: a Vercel
+      executa o `src/main.ts` diretamente, sem adapter e sem `vercel.json`
       atende: AZ-09 (parcial)
-      verifico assim: `npm run build` termina sem erro e um teste invoca o
-      handler e recebe 200 em `/v1/health`
+      verifico assim: `npm run build` passa; o empacotamento é provado no deploy
+      (T12)
 
 - [ ] T11 · Workflow do GitHub Actions: roda os testes e aplica
       `prisma migrate deploy` no Supabase antes do deploy
