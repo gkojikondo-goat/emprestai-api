@@ -22,7 +22,7 @@ function loadConfig(): Env {
 async function bootstrap() {
   const env = loadConfig();
   const app = await NestFactory.create(AppModule);
-  configureApp(app);
+  configureApp(app, env.CORS_ORIGIN);
   await app.listen(env.PORT);
 }
 

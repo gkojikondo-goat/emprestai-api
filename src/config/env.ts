@@ -5,6 +5,19 @@ const envSchema = z.object({
   DATABASE_URL: z
     .string({ error: 'variável obrigatória ausente' })
     .regex(/^postgres(ql)?:\/\//, 'deve começar com postgresql://'),
+  CORS_ORIGIN: z
+    .string({ error: 'variável obrigatória ausente' })
+    .transform((value) =>
+      value
+        .split(',')
+        .map((origin) => origin.trim().replace(/\/+$/, ''))
+        .filter(Boolean),
+    )
+    .pipe(
+      z
+        .array(z.url({ error: 'cada origem deve ser uma URL, ex.: http://localhost:5173' }))
+        .min(1, 'informe ao menos uma origem'),
+    ),
 });
 
 export type Env = z.infer<typeof envSchema>;
