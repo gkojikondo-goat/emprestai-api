@@ -27,8 +27,8 @@ test/
 Por que essa e não outra: `src/modules/<dominio>/` e Controller → Service →
 Repository já estão decididos no ADR-001; o módulo `health` segue o mesmo
 desenho que os módulos de domínio terão. `main.ts`, `app.module.ts` e `test/`
-são a convenção do NestJS (herdada, não decisão nossa). `config/`, `prisma/`
-e `api/` são escolha nossa, e só precisam virar ADR se ficarem caros de mudar.
+são a convenção do NestJS (herdada, não decisão nossa). `config/` e `prisma/`
+são escolha nossa, e só precisam virar ADR se ficarem caros de mudar.
 
 ## Tarefas
 
