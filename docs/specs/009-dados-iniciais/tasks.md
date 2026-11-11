@@ -26,7 +26,7 @@ Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
       atende: CA-11
       verifico assim: entradas simuladas de envio, seed com URL do Supabase e migrate deploy
 
-- [ ] T7 · Rodar a skill de verdade (chave do Pixabay do Gabriel), revisão visual e fotos versionadas
+- [x] T7 · Rodar a skill de verdade (chave do Pixabay do Gabriel), revisão visual e fotos versionadas
       atende: CA-07, CA-04
       verifico assim: `verificar.mjs` passa; revisão registrada em `revisao.json`
 

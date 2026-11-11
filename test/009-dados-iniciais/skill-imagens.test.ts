@@ -192,6 +192,18 @@ describe('009 · skill imagens-equipamentos', () => {
     ]);
   });
 
+  it('[009 CA-09] escolha manual (--escolher) passa pelas mesmas regras: marca e reprovada são recusadas', async () => {
+    const marca = await rodar('preparar.mjs', ['--escolher', 'TI-0001=102'], env);
+    expect(marca.codigo).toBe(1);
+    expect(marca.saida).toMatch(/TI-0001: a foto 102 não passa nas regras/);
+    const reprovada = await rodar('preparar.mjs', ['--escolher', 'TI-0001=104'], env);
+    expect(reprovada.codigo).toBe(1);
+    expect(ler(raiz, 'creditos.json')['TI-0001'].pixabayId).toBe(105);
+    const valida = await rodar('preparar.mjs', ['--escolher', 'TI-0002=203'], env);
+    expect(valida.codigo).toBe(0);
+    expect(ler(raiz, 'creditos.json')['TI-0002'].pixabayId).toBe(203);
+  });
+
   it('busca respeita o cache de 24h (exigência da API do Pixabay)', async () => {
     const antes = pixabay.contagem.api;
     const r = await rodar('preparar.mjs', ['--refazer', 'TI-0003'], env);

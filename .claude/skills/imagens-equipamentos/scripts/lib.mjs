@@ -61,7 +61,8 @@ export function origemPermitida(url) {
 /** Direito de imagem: tags que indicam pessoa, marca/logo, texto ou tela com conteúdo. */
 const PROIBIDAS = [
   /\b(person|people|persons|man|men|woman|women|girl|girls|boy|boys|child|children|kid|kids|baby|human|face|faces|portrait|hand|hands|finger|fingers|businessman|businesswoman|student|worker|user|selfie|model)\b/,
-  /\b(logo|brand|trademark|apple|macbook|imac|iphone|ipad|samsung|dell|lenovo|asus|acer|sony|canon|nikon|microsoft|windows|google|logitech|hp|lg|philips)\b/,
+  // Lista ampliada depois da 1ª revisão visual (Olympus, Fujifilm, ThinkPad, GoPro passaram pelas tags).
+  /\b(logo|brand|trademark|apple|macbook|imac|iphone|ipad|samsung|dell|lenovo|thinkpad|asus|acer|sony|canon|nikon|olympus|fujifilm|fuji|gopro|panasonic|leica|microsoft|windows|google|logitech|hp|lg|philips|twitter)\b/,
   /\b(text|word|words|letter|letters|sign|quote|typography|code|coding|programming|programmer|website|web design|social media|facebook|instagram|youtube|twitter|chart|graph|dashboard|email)\b/,
 ];
 

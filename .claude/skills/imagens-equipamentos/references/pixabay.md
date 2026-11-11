@@ -4,7 +4,7 @@ Fonte: https://pixabay.com/api/docs/ e https://pixabay.com/service/license-summa
 
 ## Requisição
 
-`GET https://pixabay.com/api/?key=<KEY>&q=<termo>&image_type=photo&safesearch=true&orientation=horizontal&min_width=800&min_height=600&per_page=50`
+`GET https://pixabay.com/api/?key=<KEY>&q=<termo>&image_type=photo&safesearch=true&orientation=horizontal&min_width=800&min_height=600&per_page=200`
 
 - A chave exige conta no Pixabay; vai só como parâmetro `key`.
 - Limite: 100 requisições por 60 s (cabeçalhos `X-RateLimit-*`; 429 ao estourar).

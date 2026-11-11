@@ -27,6 +27,10 @@ Regras da API do Pixabay (cache, hotlink, campos): `references/pixabay.md`.
    marca/logo legível, texto ou tela com conteúdo:
    `node .claude/skills/imagens-equipamentos/scripts/reprovar.mjs TI-0005 "logo legível na tampa"`
    e rode o passo 3 de novo. Toda reprovação fica em `imagens/equipamentos/revisao.json`.
+   Item difícil: `preparar.mjs --candidatos TI-0012 [--desde 9]` monta uma folha com 9 candidatas
+   aceitas pelas regras; escolha com `preparar.mjs --escolher TI-0012=<id>` (mesmas regras).
+   Critério de texto: marca/logo legível e texto de conteúdo reprovam; marcação técnica mínima do
+   próprio produto (letras de tecla, "720p", rótulos de botão) é aceita.
 5. Conferir: `node .claude/skills/imagens-equipamentos/scripts/verificar.mjs` — precisa sair 0.
 6. Commitar fotos, `creditos.json` e `revisao.json`.
 7. A pessoa envia (fora do agente): ver `docs/operacao-dados-iniciais.md`.

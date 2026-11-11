@@ -1,0 +1,364 @@
+{
+  "TI-0001": [
+    {
+      "pixabayId": 7188564,
+      "pagina": "https://pixabay.com/photos/coffee-winter-cafe-caffeine-cup-7188564/",
+      "motivo": "não mostra o equipamento (xícara de café)",
+      "em": "2026-11-11T02:18:15.655Z"
+    },
+    {
+      "pixabayId": 2982270,
+      "pagina": "https://pixabay.com/photos/computer-laptop-work-place-mouse-2982270/",
+      "motivo": "marcas Nikon e Logitech legíveis",
+      "em": "2026-11-11T02:18:56.195Z"
+    },
+    {
+      "pixabayId": 1483974,
+      "pagina": "https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/",
+      "motivo": "telas com conteúdo e iPad",
+      "em": "2026-11-11T02:19:49.420Z"
+    },
+    {
+      "pixabayId": 2325627,
+      "pagina": "https://pixabay.com/photos/desk-office-space-workspace-tidy-2325627/",
+      "motivo": "notebook quase fora do quadro",
+      "em": "2026-11-11T02:20:17.404Z"
+    },
+    {
+      "pixabayId": 4484282,
+      "pagina": "https://pixabay.com/photos/computer-office-laptop-desk-4484282/",
+      "motivo": "notebook cortado; caneta com texto",
+      "em": "2026-11-11T02:20:41.799Z"
+    },
+    {
+      "pixabayId": 5517762,
+      "pagina": "https://pixabay.com/photos/workplace-workspace-home-office-5517762/",
+      "motivo": "porta-retrato com foto de pessoa",
+      "em": "2026-11-11T02:21:02.166Z"
+    },
+    {
+      "pixabayId": 5382501,
+      "pagina": "https://pixabay.com/photos/job-office-team-business-internet-5382501/",
+      "motivo": "pessoas",
+      "em": "2026-11-11T02:21:51.141Z"
+    }
+  ],
+  "TI-0002": [
+    {
+      "pixabayId": 2511065,
+      "pagina": "https://pixabay.com/photos/coffee-glasses-open-book-study-2511065/",
+      "motivo": "caderno de papel, não é notebook",
+      "em": "2026-11-11T02:18:15.749Z"
+    }
+  ],
+  "TI-0004": [
+    {
+      "pixabayId": 4906312,
+      "pagina": "https://pixabay.com/photos/laptop-workstaion-office-work-4906312/",
+      "motivo": "pessoa (mãos e pernas)",
+      "em": "2026-11-11T02:18:15.838Z"
+    },
+    {
+      "pixabayId": 789631,
+      "pagina": "https://pixabay.com/photos/study-workroom-office-glimpse-789631/",
+      "motivo": "pôster com texto e figura humana",
+      "em": "2026-11-11T02:18:56.267Z"
+    }
+  ],
+  "TI-0005": [
+    {
+      "pixabayId": 4795762,
+      "pagina": "https://pixabay.com/photos/computer-laptop-tech-blue-computer-4795762/",
+      "motivo": "telas com conteúdo (código e página web)",
+      "em": "2026-11-11T02:18:15.918Z"
+    },
+    {
+      "pixabayId": 1207834,
+      "pagina": "https://pixabay.com/photos/home-office-pc-computer-1207834/",
+      "motivo": "logotipo da Apple",
+      "em": "2026-11-11T02:18:56.356Z"
+    },
+    {
+      "pixabayId": 932926,
+      "pagina": "https://pixabay.com/photos/office-work-desk-computer-932926/",
+      "motivo": "pessoa",
+      "em": "2026-11-11T02:19:49.515Z"
+    }
+  ],
+  "TI-0006": [
+    {
+      "pixabayId": 2181919,
+      "pagina": "https://pixabay.com/photos/chairs-conference-room-empty-2181919/",
+      "motivo": "sala de reunião; o monitor quase não aparece",
+      "em": "2026-11-11T02:18:15.998Z"
+    },
+    {
+      "pixabayId": 405768,
+      "pagina": "https://pixabay.com/photos/workstation-home-office-computer-405768/",
+      "motivo": "marca DELL legível, telas com conteúdo, caneca com logo",
+      "em": "2026-11-11T02:18:56.427Z"
+    },
+    {
+      "pixabayId": 3114274,
+      "pagina": "https://pixabay.com/photos/computer-laptop-technology-desk-3114274/",
+      "motivo": "iMac com logotipo da Apple",
+      "em": "2026-11-11T02:19:49.608Z"
+    },
+    {
+      "pixabayId": 820315,
+      "pagina": "https://pixabay.com/photos/workspace-desk-computers-laptop-820315/",
+      "motivo": "iMacs com logotipo da Apple",
+      "em": "2026-11-11T02:20:17.499Z"
+    },
+    {
+      "pixabayId": 820277,
+      "pagina": "https://pixabay.com/photos/computer-desk-workspace-home-820277/",
+      "motivo": "iMac com logotipo da Apple; fones Beats",
+      "em": "2026-11-11T02:20:41.875Z"
+    },
+    {
+      "pixabayId": 2853860,
+      "pagina": "https://pixabay.com/photos/poster-mockup-mockup-poster-frame-2853860/",
+      "motivo": "logotipo da Apple",
+      "em": "2026-11-11T02:21:02.247Z"
+    },
+    {
+      "pixabayId": 338561,
+      "pagina": "https://pixabay.com/photos/secretary-office-job-office-desk-338561/",
+      "motivo": "pessoa",
+      "em": "2026-11-11T02:21:51.218Z"
+    },
+    {
+      "pixabayId": 2561518,
+      "pagina": "https://pixabay.com/photos/computer-technology-electronics-2561518/",
+      "motivo": "pessoa",
+      "em": "2026-11-11T02:23:10.165Z"
+    },
+    {
+      "pixabayId": 2857423,
+      "pagina": "https://pixabay.com/photos/poster-mockup-interior-wall-desk-2857423/",
+      "motivo": "logotipo da Apple",
+      "em": "2026-11-11T02:24:16.013Z"
+    }
+  ],
+  "TI-0007": [
+    {
+      "pixabayId": 6801334,
+      "pagina": "https://pixabay.com/photos/technology-devices-electronics-6801334/",
+      "motivo": "não é monitor; iPhone reconhecível",
+      "em": "2026-11-11T02:18:16.078Z"
+    },
+    {
+      "pixabayId": 865091,
+      "pagina": "https://pixabay.com/photos/office-desk-smartphone-modern-865091/",
+      "motivo": "não é monitor (notebook e celular)",
+      "em": "2026-11-11T02:18:56.506Z"
+    },
+    {
+      "pixabayId": 2212967,
+      "pagina": "https://pixabay.com/photos/laptop-black-white-modern-2212967/",
+      "motivo": "notebook, não monitor",
+      "em": "2026-11-11T02:19:49.706Z"
+    },
+    {
+      "pixabayId": 5332720,
+      "pagina": "https://pixabay.com/photos/laptop-white-background-computer-5332720/",
+      "motivo": "notebook, não monitor",
+      "em": "2026-11-11T02:20:17.598Z"
+    },
+    {
+      "pixabayId": 4962269,
+      "pagina": "https://pixabay.com/photos/old-computer-8bit-technology-retro-4962269/",
+      "motivo": "tela com texto",
+      "em": "2026-11-11T02:20:41.955Z"
+    },
+    {
+      "pixabayId": 5446357,
+      "pagina": "https://pixabay.com/photos/technology-laptop-notebook-computer-5446357/",
+      "motivo": "notebook, não monitor",
+      "em": "2026-11-11T02:21:02.336Z"
+    },
+    {
+      "pixabayId": 2853839,
+      "pagina": "https://pixabay.com/photos/poster-mockup-mockup-poster-frame-2853839/",
+      "motivo": "notebook, não monitor",
+      "em": "2026-11-11T02:21:51.295Z"
+    },
+    {
+      "pixabayId": 5446361,
+      "pagina": "https://pixabay.com/photos/laptop-screen-keyboard-keys-5446361/",
+      "motivo": "notebook, não monitor",
+      "em": "2026-11-11T02:23:10.271Z"
+    }
+  ],
+  "TI-0008": [
+    {
+      "pixabayId": 2202226,
+      "pagina": "https://pixabay.com/photos/hdmi-connector-cable-plug-2202226/",
+      "motivo": "logotipo HDMI legível em relevo (marca registrada)",
+      "em": "2026-11-11T02:18:16.198Z"
+    },
+    {
+      "pixabayId": 5407447,
+      "pagina": "https://pixabay.com/photos/usb-hdmi-translation-5407447/",
+      "motivo": "adaptador com texto 'Wireless Display Dongle', não é cabo",
+      "em": "2026-11-11T02:18:56.587Z"
+    },
+    {
+      "pixabayId": 2358959,
+      "pagina": "https://pixabay.com/photos/technology-computer-connection-plug-2358959/",
+      "motivo": "portas de notebook, não um cabo",
+      "em": "2026-11-11T02:19:49.803Z"
+    },
+    {
+      "pixabayId": 3645129,
+      "pagina": "https://pixabay.com/photos/connections-plug-connection-bnc-3645129/",
+      "motivo": "conectores BNC com texto HDMI-IN/SDI",
+      "em": "2026-11-11T02:20:17.706Z"
+    }
+  ],
+  "TI-0009": [
+    {
+      "pixabayId": 4875319,
+      "pagina": "https://pixabay.com/photos/cable-computer-usb-technology-4875319/",
+      "motivo": "conectores USB-A, não USB-C; logotipo USB em relevo",
+      "em": "2026-11-11T02:18:16.287Z"
+    },
+    {
+      "pixabayId": 7066127,
+      "pagina": "https://pixabay.com/photos/cable-charging-cable-usb-7066127/",
+      "motivo": "micro-USB, não USB-C; logotipo USB",
+      "em": "2026-11-11T02:18:56.685Z"
+    },
+    {
+      "pixabayId": 2467267,
+      "pagina": "https://pixabay.com/photos/ebook-a-book-charging-cable-2467267/",
+      "motivo": "o assunto é um tablet, não o cabo",
+      "em": "2026-11-11T02:19:49.888Z"
+    },
+    {
+      "pixabayId": 7066188,
+      "pagina": "https://pixabay.com/photos/cable-charging-cable-usb-7066188/",
+      "motivo": "mesmo cabo micro-USB já reprovado",
+      "em": "2026-11-11T02:20:17.796Z"
+    }
+  ],
+  "TI-0011": [
+    {
+      "pixabayId": 1155173,
+      "pagina": "https://pixabay.com/photos/portable-computer-computer-pra%C3%A7a-1155173/",
+      "motivo": "não é webcam; marcas lenovo e ThinkPad legíveis",
+      "em": "2026-11-11T02:18:16.373Z"
+    },
+    {
+      "pixabayId": 2937216,
+      "pagina": "https://pixabay.com/photos/computer-kind-smile-2937216/",
+      "motivo": "pessoa",
+      "em": "2026-11-11T02:18:56.768Z"
+    },
+    {
+      "pixabayId": 5962733,
+      "pagina": "https://pixabay.com/photos/video-call-video-conference-zoom-5962733/",
+      "motivo": "tela com conteúdo (chamada de vídeo)",
+      "em": "2026-11-11T02:19:49.971Z"
+    },
+    {
+      "pixabayId": 5817031,
+      "pagina": "https://pixabay.com/photos/meeting-conference-laptop-interview-5817031/",
+      "motivo": "pessoas",
+      "em": "2026-11-11T02:20:17.905Z"
+    },
+    {
+      "pixabayId": 796227,
+      "pagina": "https://pixabay.com/photos/web-cam-internet-video-796227/",
+      "motivo": "texto WEB CAMERA legível na lente",
+      "em": "2026-11-11T02:20:42.032Z"
+    },
+    {
+      "pixabayId": 5219507,
+      "pagina": "https://pixabay.com/photos/remote-access-video-conference-5219507/",
+      "motivo": "texto na tela do celular",
+      "em": "2026-11-11T02:21:02.416Z"
+    },
+    {
+      "pixabayId": 5609682,
+      "pagina": "https://pixabay.com/photos/video-conference-work-laptop-5609682/",
+      "motivo": "ilustração com pessoa",
+      "em": "2026-11-11T02:21:51.368Z"
+    },
+    {
+      "pixabayId": 4480363,
+      "pagina": "https://pixabay.com/photos/streaming-stream-live-stream-4480363/",
+      "motivo": "tela com conteúdo (VPN)",
+      "em": "2026-11-11T02:23:10.379Z"
+    }
+  ],
+  "TI-0012": [
+    {
+      "pixabayId": 541213,
+      "pagina": "https://pixabay.com/photos/camera-olympus-digital-camera-541213/",
+      "motivo": "marca OLYMPUS legível",
+      "em": "2026-11-11T02:18:16.455Z"
+    },
+    {
+      "pixabayId": 1362419,
+      "pagina": "https://pixabay.com/photos/camera-digital-photography-1362419/",
+      "motivo": "marca FUJIFILM legível",
+      "em": "2026-11-11T02:18:56.855Z"
+    },
+    {
+      "pixabayId": 7693094,
+      "pagina": "https://pixabay.com/photos/camera-vintage-camera-film-camera-7693094/",
+      "motivo": "marca Rollei legível",
+      "em": "2026-11-11T02:19:50.050Z"
+    },
+    {
+      "pixabayId": 4516107,
+      "pagina": "https://pixabay.com/photos/holidays-book-online-travel-book-4516107/",
+      "motivo": "mãos e texto na tela",
+      "em": "2026-11-11T02:20:18.004Z"
+    },
+    {
+      "pixabayId": 3545828,
+      "pagina": "https://pixabay.com/photos/camera-compact-digital-3545828/",
+      "motivo": "textos de especificação e marca Pentax legíveis",
+      "em": "2026-11-11T02:20:42.123Z"
+    },
+    {
+      "pixabayId": 5028354,
+      "pagina": "https://pixabay.com/photos/camera-photo-former-wood-vintage-5028354/",
+      "motivo": "marca Kodak legível",
+      "em": "2026-11-11T02:21:02.497Z"
+    },
+    {
+      "pixabayId": 3480569,
+      "pagina": "https://pixabay.com/photos/cameras-old-retro-film-vintage-3480569/",
+      "motivo": "marca Praktica legível",
+      "em": "2026-11-11T02:21:51.474Z"
+    },
+    {
+      "pixabayId": 2430571,
+      "pagina": "https://pixabay.com/photos/town-buildings-houses-townscape-2430571/",
+      "motivo": "vista de cidade, sem câmera",
+      "em": "2026-11-11T02:23:10.486Z"
+    },
+    {
+      "pixabayId": 5416893,
+      "pagina": "https://pixabay.com/photos/vacations-more-camera-5416893/",
+      "motivo": "marca Kodak legível",
+      "em": "2026-11-11T02:24:16.100Z"
+    },
+    {
+      "pixabayId": 1283953,
+      "pagina": "https://pixabay.com/photos/camera-photography-vintage-1283953/",
+      "motivo": "marcas СМЕНА e ЛОМО legíveis",
+      "em": "2026-11-11T02:25:05.151Z"
+    },
+    {
+      "pixabayId": 820018,
+      "pagina": "https://pixabay.com/photos/camera-vintage-retro-old-820018/",
+      "motivo": "marca ФЭД-2 legível",
+      "em": "2026-11-11T02:25:29.481Z"
+    }
+  ]
+}
