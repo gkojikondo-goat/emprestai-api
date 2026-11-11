@@ -99,6 +99,8 @@ emprestado ou em manutenção), pode buscar e filtrar.
 
 - Novo: `GET /v1/equipamentos` → `{ itens: [{ id, nome, categoria, patrimonio, situacao,
   observacao, imagemUrl, emprestimo }], proximoCursor, totais: { total, disponiveis } }`.
+  `proximoCursor` vem **ausente** na última página (não `null`): o nestjs-zod 5 publica um campo
+  `string | null` do primeiro nível do DTO como array no OpenAPI 3.1, o que quebraria o cliente gerado.
 - Nova variável da API: `STORAGE_PUBLIC_URL` (base pública do bucket `equipamentos`).
 - Novas tabelas `equipamentos` e `emprestimos` (esta só lida aqui; escrita na spec 006); ver plano.
 - Cliente do front regenerado a partir do `openapi.json`.

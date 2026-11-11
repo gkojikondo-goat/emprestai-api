@@ -32,7 +32,9 @@ const Equipamento = z.object({
 
 export const ListaEquipamentos = z.object({
   itens: z.array(Equipamento),
-  proximoCursor: z.string().nullable(),
+  // Ausente na última página. Não é `.nullable()`: no 1º nível do DTO, o
+  // nestjs-zod 5 publica `string | null` (OpenAPI 3.1) como array de string.
+  proximoCursor: z.string().optional(),
   totais: z.object({ total: z.number().int(), disponiveis: z.number().int() }),
 });
 

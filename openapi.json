@@ -125,10 +125,7 @@
             "type": "array"
           },
           "proximoCursor": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "type": "string"
           },
           "totais": {
             "additionalProperties": false,
@@ -153,7 +150,6 @@
         },
         "required": [
           "itens",
-          "proximoCursor",
           "totais"
         ],
         "type": "object"

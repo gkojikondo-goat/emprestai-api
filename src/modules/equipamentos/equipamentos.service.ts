@@ -69,7 +69,7 @@ export class EquipamentosService {
             : null,
       })),
       proximoCursor:
-        linhas.length > p.limite && ultima ? codificarCursor({ criadoEm: ultima.cursor, id: ultima.id }) : null,
+        linhas.length > p.limite && ultima ? codificarCursor({ criadoEm: ultima.cursor, id: ultima.id }) : undefined,
       totais,
     };
   }
