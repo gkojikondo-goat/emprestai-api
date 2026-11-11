@@ -307,3 +307,37 @@ describe('009 · skill imagens-equipamentos', () => {
     expect(r.saida).toMatch(/SUPABASE_URL inválida/);
   });
 });
+
+describe('009 · fotos versionadas no repositório', () => {
+  const REPO = path.resolve(__dirname, '../..');
+  const PASTA = path.join(REPO, 'imagens', 'equipamentos');
+  const LISTA_REAL: { patrimonio: string }[] = JSON.parse(
+    readFileSync(path.join(REPO, 'prisma', 'dados', 'equipamentos.json'), 'utf8'),
+  );
+
+  it('[009 CA-07] 12 JPEG 800×600, um por patrimônio, sem repetição e com crédito completo', async () => {
+    expect(LISTA_REAL).toHaveLength(12);
+    for (const { patrimonio } of LISTA_REAL) {
+      const meta = await sharp(path.join(PASTA, `${patrimonio}.jpg`)).metadata();
+      expect([patrimonio, meta.width, meta.height, meta.format]).toEqual([patrimonio, 800, 600, 'jpeg']);
+    }
+    const creditos = JSON.parse(readFileSync(path.join(PASTA, 'creditos.json'), 'utf8'));
+    expect(Object.keys(creditos).sort()).toEqual(LISTA_REAL.map((i) => i.patrimonio).sort());
+    // Mesma conferência que o envio ao Storage usa (ids e hashes únicos, campos, licença, origem).
+    const r = await rodar('verificar.mjs', [], { SKILL_RAIZ: REPO });
+    expect(r.codigo).toBe(0);
+  });
+
+  it('[009 CA-09] nenhuma foto reprovada na revisão visual está em uso', () => {
+    const creditos = JSON.parse(readFileSync(path.join(PASTA, 'creditos.json'), 'utf8'));
+    const revisao: Record<string, { pixabayId: number; motivo: string }[]> = JSON.parse(
+      readFileSync(path.join(PASTA, 'revisao.json'), 'utf8'),
+    );
+    const reprovadas = new Set(Object.values(revisao).flat().map((r) => r.pixabayId));
+    expect(reprovadas.size).toBeGreaterThan(0);
+    for (const cr of Object.values(creditos) as { pixabayId: number }[]) {
+      expect(reprovadas.has(cr.pixabayId)).toBe(false);
+    }
+    for (const r of Object.values(revisao).flat()) expect(r.motivo.length).toBeGreaterThan(3);
+  });
+});
