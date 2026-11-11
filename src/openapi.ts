@@ -8,7 +8,9 @@ import { AppModule } from './app.module';
 
 /** Documento OpenAPI gerado dos schemas Zod (ADR-001: fonte do contrato). */
 export function gerarDocumento(app: INestApplication): OpenAPIObject {
+  // 3.1: o Zod 4 gera campos anuláveis como `type: [..., 'null']`, que só a 3.1 aceita.
   const config = new DocumentBuilder()
+    .setOpenAPIVersion('3.1.0')
     .setTitle('Emprestai API')
     .setVersion('1')
     .addBearerAuth()

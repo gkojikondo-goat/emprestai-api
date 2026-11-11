@@ -12,26 +12,32 @@
                   "type": "string"
                 },
                 "emprestimo": {
-                  "additionalProperties": false,
-                  "nullable": true,
-                  "properties": {
-                    "comigo": {
-                      "type": "boolean"
+                  "anyOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "comigo": {
+                          "type": "boolean"
+                        },
+                        "devolverAte": {
+                          "description": "AAAA-MM-DD",
+                          "type": "string"
+                        },
+                        "pessoaNome": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "pessoaNome",
+                        "devolverAte",
+                        "comigo"
+                      ],
+                      "type": "object"
                     },
-                    "devolverAte": {
-                      "description": "AAAA-MM-DD",
-                      "type": "string"
-                    },
-                    "pessoaNome": {
-                      "type": "string"
+                    {
+                      "type": "null"
                     }
-                  },
-                  "required": [
-                    "pessoaNome",
-                    "devolverAte",
-                    "comigo"
-                  ],
-                  "type": "object"
+                  ]
                 },
                 "id": {
                   "format": "uuid",
@@ -180,7 +186,7 @@
     "title": "Emprestai API",
     "version": "1"
   },
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "paths": {
     "/v1/equipamentos": {
       "get": {
