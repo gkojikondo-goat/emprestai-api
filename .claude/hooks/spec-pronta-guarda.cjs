@@ -5,10 +5,11 @@
 //      "Veredito: PRONTA" para o commit atual (HEAD), sem código alterado
 //      fora de docs/specs/ depois dela.
 //   2. Só o verificador-spec escreve em docs/specs/<spec>/verificacao/.
-// Qualquer erro deste script bloqueia (falha fechada).
+// O repositório é o do arquivo editado (repo.cjs). Qualquer erro bloqueia.
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
+const { raizDoRepo, relativo, base } = require('./repo.cjs');
 
 const VERIFICADOR = 'verificador-spec';
 const MARCA_PRONTA = /\*\*Implementada:\*\*\s*sim/i;
@@ -16,10 +17,6 @@ const MARCA_PRONTA = /\*\*Implementada:\*\*\s*sim/i;
 function bloquear(motivo) {
   process.stderr.write(`[spec-pronta-guarda] bloqueado: ${motivo}\n`);
   process.exit(2);
-}
-
-function relativo(raiz, alvo) {
-  return path.relative(raiz, path.resolve(raiz, alvo)).split(path.sep).join('/');
 }
 
 function git(raiz, ...args) {
@@ -66,7 +63,7 @@ function vereditoValido(raiz, spec) {
 
 try {
   const entrada = JSON.parse(fs.readFileSync(0, 'utf8'));
-  const raiz = process.env.CLAUDE_PROJECT_DIR || entrada.cwd || process.cwd();
+  const pasta = base(entrada);
   const { tool_name: ferramenta, tool_input: dados = {}, agent_type: agente } = entrada;
   const ehVerificador = agente === VERIFICADOR;
 
@@ -74,7 +71,9 @@ try {
     const cmd = String(dados.command || '').trim();
     // git add/commit/status/log/diff/show são liberados: o agente principal
     // precisa commitar a rodada que o verificador gravou.
-    const gitSemEscrita = /^git (add|commit|status|log|diff|show)\s/.test(cmd) && !/[;|>`]|&&|\$\(/.test(cmd);
+    const semCd = cmd.replace(/^cd\s+\S+\s*&&\s*/, '');
+    const gitSemEscrita =
+      /^git (add|commit|status|log|diff|show)\s/.test(semCd) && !/[;|>`]|&&|\$\(/.test(semCd);
     if (!ehVerificador && !gitSemEscrita && /verificacao[\/\\]|Implementada/i.test(cmd)) {
       bloquear('registro do verificador e marca "Implementada" não se alteram por shell');
     }
@@ -83,7 +82,10 @@ try {
 
   if (ferramenta !== 'Edit' && ferramenta !== 'Write') process.exit(0);
 
-  const rel = relativo(raiz, dados.file_path || '');
+  const arquivo = path.resolve(pasta, dados.file_path || '');
+  const raiz = raizDoRepo(arquivo);
+  if (!raiz) process.exit(0);
+  const rel = relativo(raiz, arquivo);
 
   if (/^docs\/specs\/[^/]+\/verificacao\//.test(rel) && !ehVerificador) {
     bloquear(`só o ${VERIFICADOR} escreve em ${rel}`);
@@ -91,7 +93,6 @@ try {
 
   const spec = rel.match(/^docs\/specs\/([^/]+)\/spec\.md$/);
   if (spec) {
-    const arquivo = path.resolve(raiz, dados.file_path);
     const antes = fs.existsSync(arquivo) ? fs.readFileSync(arquivo, 'utf8') : '';
     const depois = conteudoDepois(arquivo, ferramenta, dados);
     if (!MARCA_PRONTA.test(antes) && MARCA_PRONTA.test(depois)) {

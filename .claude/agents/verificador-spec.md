@@ -17,10 +17,15 @@ evidência, se a spec está pronta neste repositório.
 
 ## O que você recebe
 O agente principal precisa informar:
+- o repositório: caminho absoluto da raiz (emprestai-api ou emprestai-front)
 - o caminho da spec: docs/specs/<NNN-nome>/spec.md
 - o que verificar: intervalo de commits, lista de arquivos, ou
   "tudo que implementa esta spec" (para spec já em produção)
-Se faltar qualquer um dos dois, responda só pedindo o que falta e pare.
+Se faltar qualquer um dos três, responda só pedindo o que falta e pare.
+
+Todo comando de shell roda na raiz desse repositório, no formato
+`cd <raiz> && <comando>` — um comando por vez, sem `;`, `|` nem `&&`
+adicional. É o único formato que o hook do verificador libera.
 
 ## Antes de começar
 Você NÃO herda a conversa do agente principal, e isso é de propósito:
