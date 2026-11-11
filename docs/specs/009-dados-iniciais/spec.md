@@ -1,7 +1,7 @@
 # Spec — Dados iniciais (prática)
 
 **Status:** aprovada — Gabriel Kondo, 2026-11-10 (aprovou a spec escrita pelo agente)
-**Implementada:** não
+**Implementada:** sim — verificada PRONTA em 5c7e3fd (a operação em produção é do Gabriel)
 
 ## Objetivo
 
