@@ -43,6 +43,14 @@ emprestado ou em manutenção), pode buscar e filtrar.
     "Solicitar" é desenhado mas só ganha ação na spec 006.
 13. Busca e filtros atuam a cada tecla/clique, sem botão. Estado vazio: "Nenhum equipamento encontrado."
 14. Atualização sem tempo real: os dados são refeitos ao voltar para a aba e após cada ação.
+15. **Foto (emenda da prática, 2026-11-10).** Cada equipamento pode ter uma foto, guardada no bucket
+    público `equipamentos` do Supabase Storage e preparada pela skill `imagens-equipamentos`. A API
+    devolve `imagemUrl` (URL pública completa) ou `null`. O card mostra a foto no topo, em proporção
+    4:3 (as fotos são 800×600), com `alt` igual ao nome; sem foto, um quadro neutro do mesmo tamanho.
+16. **Crédito (emenda da prática).** O catálogo mostra "Fotos: Pixabay" com link para
+    `https://pixabay.com`, em texto discreto (40%) abaixo da grade. Conflita com o briefing de
+    solicitar empréstimo ("catálogo sem texto de crédito"); decidido manter: é exigência do contrato
+    da skill e da fonte das imagens (ver docs/decisoes-pratica.md, C7).
 
 ## Critérios de aceitação
 
@@ -74,17 +82,23 @@ emprestado ou em manutenção), pode buscar e filtrar.
   carregar o catálogo." e o botão "Tentar novamente".
 - CA-18 · [front] Quando há `proximoCursor`, aparece "Carregar mais" que acrescenta a próxima página.
 - CA-19 · [front] Datas aparecem em `DD/MM/AAAA`.
+- CA-20 · [back] Cada item traz `imagemUrl`: a URL pública da foto no Storage, ou `null` sem foto.
+- CA-21 · [front] O card mostra a foto em 4:3 com `alt` igual ao nome; sem `imagemUrl`, um quadro
+  neutro do mesmo tamanho.
+- CA-22 · [front] O catálogo mostra "Fotos: Pixabay" com link para `https://pixabay.com`.
 
 ## Fora de escopo / não decidido
 
 - Solicitar empréstimo (spec 006) e o banner de atraso (spec 006).
 - Cadastrar ou editar equipamento (spec 005 cadastra; edição não existe na v1).
-- Ordenação escolhida pela pessoa, busca ignorando acento (P9), foto do equipamento.
+- Ordenação escolhida pela pessoa, busca ignorando acento (P9).
+- Enviar ou trocar foto pela interface (as fotos vêm da skill `imagens-equipamentos`).
 - Tempo real (fora de escopo no ADR-001).
 
 ## Contrato afetado
 
 - Novo: `GET /v1/equipamentos` → `{ itens: [{ id, nome, categoria, patrimonio, situacao,
-  observacao, emprestimo }], proximoCursor, totais: { total, disponiveis } }`.
+  observacao, imagemUrl, emprestimo }], proximoCursor, totais: { total, disponiveis } }`.
+- Nova variável da API: `STORAGE_PUBLIC_URL` (base pública do bucket `equipamentos`).
 - Novas tabelas `equipamentos` e `emprestimos` (esta só lida aqui; escrita na spec 006); ver plano.
 - Cliente do front regenerado a partir do `openapi.json`.

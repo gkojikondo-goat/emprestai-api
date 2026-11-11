@@ -31,6 +31,7 @@ export async function subirApp() {
     CORS_ORIGIN: 'http://localhost:5173',
     SUPABASE_JWKS_URL: `${EMISSOR}/.well-known/jwks.json`,
     SUPABASE_JWT_ISSUER: EMISSOR,
+    STORAGE_PUBLIC_URL: 'https://teste.supabase.co/storage/v1/object/public/equipamentos',
   });
   const modulo = await Test.createTestingModule({ imports: [AppModule] })
     .overrideProvider(ENV)

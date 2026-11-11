@@ -20,8 +20,10 @@ model Tenant {
   id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   slug        String       @unique
   nome        String
-  criadoEm    DateTime     @default(now()) @map("criado_em") @db.Timestamptz(6)
-  memberships Membership[]
+  criadoEm     DateTime      @default(now()) @map("criado_em") @db.Timestamptz(6)
+  memberships  Membership[]
+  equipamentos Equipamento[]
+  emprestimos  Emprestimo[]
 
   @@map("tenants")
 }
@@ -38,4 +40,41 @@ model Membership {
   @@unique([userId, tenantId])
   @@index([tenantId])
   @@map("memberships")
+}
+
+// Spec 004. CHECKs de categoria e situacao, o unique parcial de emprestimos e o
+// RLS ficam em SQL bruto na migration. situacao guardada só tem disponivel |
+// manutencao; "emprestado" é derivado do empréstimo aberto.
+model Equipamento {
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenantId    String       @map("tenant_id") @db.Uuid
+  nome        String
+  categoria   String
+  patrimonio  String?
+  situacao    String
+  observacao  String?
+  imagemPath  String?      @map("imagem_path")
+  criadoEm    DateTime     @default(now()) @map("criado_em") @db.Timestamptz(6)
+  tenant      Tenant       @relation(fields: [tenantId], references: [id])
+  emprestimos Emprestimo[]
+
+  @@unique([tenantId, patrimonio])
+  @@index([tenantId, criadoEm(sort: Desc), id(sort: Desc)])
+  @@map("equipamentos")
+}
+
+model Emprestimo {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenantId      String      @map("tenant_id") @db.Uuid
+  equipamentoId String      @map("equipamento_id") @db.Uuid
+  userId        String      @map("user_id") @db.Uuid
+  retiradaEm    DateTime    @map("retirada_em") @db.Date
+  devolverAte   DateTime    @map("devolver_ate") @db.Date
+  devolvidoEm   DateTime?   @map("devolvido_em") @db.Date
+  criadoEm      DateTime    @default(now()) @map("criado_em") @db.Timestamptz(6)
+  tenant        Tenant      @relation(fields: [tenantId], references: [id])
+  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id])
+
+  @@index([tenantId, userId])
+  @@map("emprestimos")
 }

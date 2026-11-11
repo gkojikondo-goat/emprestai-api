@@ -23,6 +23,12 @@ const envSchema = z.object({
     error: 'URL da JWKS, ex.: https://<ref>.supabase.co/auth/v1/.well-known/jwks.json',
   }),
   SUPABASE_JWT_ISSUER: z.url({ error: 'emissor do token, ex.: https://<ref>.supabase.co/auth/v1' }),
+  // Spec 004 regra 15: base pública do bucket de fotos (sem barra no final).
+  STORAGE_PUBLIC_URL: z
+    .url({
+      error: 'base pública do bucket, ex.: https://<ref>.supabase.co/storage/v1/object/public/equipamentos',
+    })
+    .transform((v) => v.replace(/\/+$/, '')),
 });
 
 export type Env = z.infer<typeof envSchema>;
