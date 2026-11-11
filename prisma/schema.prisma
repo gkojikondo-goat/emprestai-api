@@ -14,3 +14,28 @@ model AppInfo {
 
   @@map("app_info")
 }
+
+// Spec 002. papel tem CHECK em SQL bruto na migration (colaborador | operacoes).
+model Tenant {
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug        String       @unique
+  nome        String
+  criadoEm    DateTime     @default(now()) @map("criado_em") @db.Timestamptz(6)
+  memberships Membership[]
+
+  @@map("tenants")
+}
+
+// user_id é o sub do Supabase Auth; não há FK para o schema auth.
+model Membership {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId   String @map("user_id") @db.Uuid
+  tenantId String @map("tenant_id") @db.Uuid
+  papel    String
+  nome     String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+
+  @@unique([userId, tenantId])
+  @@index([tenantId])
+  @@map("memberships")
+}

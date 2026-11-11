@@ -18,6 +18,11 @@ const envSchema = z.object({
         .array(z.url({ error: 'cada origem deve ser uma URL, ex.: http://localhost:5173' }))
         .min(1, 'informe ao menos uma origem'),
     ),
+  // Spec 002: validação do token do Supabase pela JWKS pública.
+  SUPABASE_JWKS_URL: z.url({
+    error: 'URL da JWKS, ex.: https://<ref>.supabase.co/auth/v1/.well-known/jwks.json',
+  }),
+  SUPABASE_JWT_ISSUER: z.url({ error: 'emissor do token, ex.: https://<ref>.supabase.co/auth/v1' }),
 });
 
 export type Env = z.infer<typeof envSchema>;
