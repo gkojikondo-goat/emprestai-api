@@ -6,7 +6,7 @@ Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
       atende: CA-01, CA-02, CA-03, CA-04 (lado do banco), CA-05
       verifico assim: seed três vezes contra Testcontainers com schema `auth` mínimo
 
-- [ ] T2 · Varredura de segredos nos arquivos versionados
+- [x] T2 · Varredura de segredos nos arquivos versionados
       atende: CA-06
       verifico assim: teste falha se a senha da turma ou um JWT `service_role` aparecer
 
