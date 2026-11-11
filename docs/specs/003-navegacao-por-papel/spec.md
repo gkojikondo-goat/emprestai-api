@@ -50,7 +50,9 @@ Operações. As telas de negócio entram nas specs seguintes; esta entrega o esq
 - CA-08 · [front] Clicar em "Sair" encerra a sessão e leva a `/login`.
 - CA-09 · [front] Recarregar a página em `/meus-emprestimos` (e nas demais rotas) com sessão ativa
   mantém a rota e não dá 404 na Vercel. Prova: teste do `vercel.json` **e** conferência no link de
-  produção (rules/tests.md). Conferido no link de produção: **pendente** (depende do deploy).
+  produção (rules/tests.md). **Conferido no link de produção em 2026-11-11** (deploy de `a7801e7`):
+  o Gabriel recarregou `/meus-emprestimos` logado e a rota se manteve; `GET
+  https://emprestai-front-wine.vercel.app/meus-emprestimos` responde 200 com o `index.html`.
 - CA-10 · [front] `/catalogo`, `/meus-emprestimos`, `/operacoes` e `/equipamentos` mostram o título
   da página e "Em construção." até a spec correspondente ser implementada.
 - CA-13 · [front] Com sessão, uma rota desconhecida leva a `/catalogo` (regra 9).
