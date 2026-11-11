@@ -22,7 +22,7 @@ Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
       atende: CA-10
       verifico assim: processo contra Storage falso: upsert, recusa fora de 800×600, exige a chave
 
-- [ ] T6 · Hook `producao-guarda`
+- [x] T6 · Hook `producao-guarda`
       atende: CA-11
       verifico assim: entradas simuladas de envio, seed com URL do Supabase e migrate deploy
 

@@ -9,6 +9,15 @@
             "command": "node.exe \"${CLAUDE_PROJECT_DIR}/.claude/hooks/spec-pronta-guarda.cjs\""
           }
         ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node.exe \"${CLAUDE_PROJECT_DIR}/.claude/hooks/producao-guarda.cjs\""
+          }
+        ]
       }
     ]
   }
