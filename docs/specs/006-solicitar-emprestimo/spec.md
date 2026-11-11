@@ -14,6 +14,19 @@ decidiu: no máximo 3 itens, prazo de 14 dias, bloqueio por atraso e manutençã
 - ADR-001: REST sob `/v1`, Problem Details, auditoria, Guards + CASL, transações no Postgres.
 - Visual: docs/layout.md, seções 5.2, 5.6 e 7 (itens 1, 4, 5, 6).
 - Specs: 004 (catálogo e tabela `emprestimos`), 005 (tabela `auditoria`).
+- Briefing "solicitar empréstimo" da prática (pedido, não spec).
+
+## Briefing da prática × o que já existia (emenda de 2026-11-10)
+
+| Briefing pede | Conflita com | Decisão |
+|---|---|---|
+| "Quem já tem 5 empréstimos em aberto não pode solicitar outro" | PRD: no máximo 3 itens | 3 — regra de negócio é do PRD |
+| Devolução prevista "14 dias úteis depois" | PRD: prazo padrão de 14 dias; P4 (data civil) | 14 dias corridos — o PRD não fala em dias úteis e nada define feriados |
+| "Catálogo limpo, sem rodapé nem texto de crédito" | contrato da skill: "Fotos: Pixabay" com link | crédito mantido, discreto (spec 004 regra 16) |
+| "O colaborador vê os próprios empréstimos em aberto, com a data de devolução prevista" | a tela `/meus-emprestimos` era da spec 007 (devolução, fora da prática) | regra 11 abaixo: versão mínima da tela entra aqui; a 007 acrescenta devolução, estados e a barra de 3 traços |
+| Tabela `auditoria` vinha da spec 005 (cadastro, fora da prática) | — | a migration da 006 cria a `auditoria`; a 005 passa a só usá-la |
+| "Solicitar cria o empréstimo na hora, sem aprovação" | — | já era assim (regra 1) |
+| "Dois pedidos ao mesmo equipamento ao mesmo tempo: só um é criado" | — | já era assim (regra 5, CA-07) |
 
 ## Regras
 
@@ -41,6 +54,13 @@ decidiu: no máximo 3 itens, prazo de 14 dias, bloqueio por atraso e manutençã
    estilo secundário. Com algum item em atraso, fica desabilitado com "Bloqueado por atraso" e aparece
    no topo do catálogo o banner vermelho (layout 1) com atalho para `/meus-emprestimos`.
 10. Confirmar mostra o toast "Empréstimo solicitado." e atualiza catálogo e Meus empréstimos.
+11. **Meus empréstimos, versão mínima (emenda da prática).** `/meus-emprestimos` mostra o H1 "Meus
+    empréstimos", o texto "N de 3 itens em seu nome · prazo padrão de 14 dias" e uma linha por
+    empréstimo em aberto com nome, patrimônio, "Retirada" e "Devolver até" em `DD/MM/AAAA`. Sem
+    empréstimos: "Nenhum empréstimo em aberto." e o botão "Ir ao catálogo". Botão Devolver, estados
+    de prazo e barra de 3 traços ficam para a spec 007.
+12. Recusa visível: quando a API recusa um pedido (limite, atraso, indisponível), o toast mostra o
+    motivo em português, a partir do `type` do Problem Details.
 
 ## Critérios de aceitação
 
@@ -71,6 +91,14 @@ decidiu: no máximo 3 itens, prazo de 14 dias, bloqueio por atraso e manutençã
   para `/meus-emprestimos`.
 - CA-19 · [front] Erro 409 ou 422 da API fecha o modal, mostra a mensagem do erro em toast e atualiza o catálogo.
 - CA-20 · [front] "Cancelar" e clique fora fecham o modal sem chamar a API; clique dentro não fecha.
+- CA-21 · [front] `/meus-emprestimos` mostra "N de 3 itens em seu nome · prazo padrão de 14 dias" e
+  uma linha por empréstimo em aberto com nome, patrimônio, Retirada e Devolver até em `DD/MM/AAAA`.
+- CA-22 · [front] Sem empréstimos em aberto, `/meus-emprestimos` mostra "Nenhum empréstimo em aberto."
+  e "Ir ao catálogo", que leva a `/catalogo`.
+- CA-23 · [front] O toast de recusa traz o motivo: `limite-de-itens` → "Você já tem 3 itens
+  emprestados.", `bloqueado-por-atraso` → "Você tem um item em atraso. Devolva-o antes de pedir
+  outro.", `equipamento-indisponivel` → "Este equipamento acabou de ser emprestado.",
+  `equipamento-em-manutencao` → "Este equipamento está em manutenção."
 
 ## Fora de escopo / não decidido
 

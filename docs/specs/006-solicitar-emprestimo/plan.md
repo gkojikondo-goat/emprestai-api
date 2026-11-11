@@ -16,7 +16,14 @@ Esc), a proposta é trazer o `Dialog` do shadcn/ui, que o ADR-001 já prevê; fi
 
 ## Modelo de dados
 
-Sem tabelas novas: usa `emprestimos` (spec 004) e `auditoria` (spec 005).
+Usa `emprestimos` (spec 004). **Emenda da prática:** a tabela `auditoria`, que viria da spec 005
+(fora da prática), nasce aqui:
+
+```
+auditoria (id uuid pk, tenant_id uuid fk, ator_id uuid, acao text, recurso_tipo text,
+           recurso_id uuid, dados jsonb, criado_em timestamptz)
+           append-only: trigger recusa UPDATE e DELETE; RLS ligado, sem policy
+```
 
 ## Organização de pastas proposta
 

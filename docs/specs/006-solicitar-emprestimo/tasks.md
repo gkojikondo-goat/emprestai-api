@@ -35,5 +35,9 @@ Uma tarefa por vez, um commit por tarefa. T1 a T5 API; T6 a T9 front.
       verifico assim: data do modal é hoje mais 14; clique fora fecha, clique dentro não
 
 - [ ] T9 · Confirmar, toast, atualização das telas e erros da API
-      atende: CA-15, CA-19
+      atende: CA-15, CA-19, CA-23
       verifico assim: pedir um item o torna "Está com você"; forçar 409 mostra o toast e atualiza
+
+- [ ] T10 · Meus empréstimos, versão mínima (emenda da prática)
+      atende: CA-21, CA-22
+      verifico assim: lista com datas em DD/MM/AAAA; estado vazio leva ao catálogo
