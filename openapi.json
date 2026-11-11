@@ -69,24 +69,25 @@
   "paths": {
     "/v1/health": {
       "get": {
-        "operationId": "HealthController_check",
+        "operationId": "verificarSaude",
         "parameters": [],
         "responses": {
           "200": {
             "description": ""
           }
         },
+        "summary": "Status da API e do banco",
         "tags": [
-          "Health"
+          "health"
         ]
       }
     },
     "/v1/me": {
       "get": {
-        "operationId": "MeController_me",
+        "operationId": "obterMe",
         "parameters": [],
         "responses": {
-          "default": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
@@ -102,6 +103,7 @@
             "bearer": []
           }
         ],
+        "summary": "Quem está chamando",
         "tags": [
           "me"
         ]
