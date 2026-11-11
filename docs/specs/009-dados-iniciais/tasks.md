@@ -30,6 +30,6 @@ Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
       atende: CA-07, CA-04
       verifico assim: `verificar.mjs` passa; revisão registrada em `revisao.json`
 
-- [ ] T8 · `docs/operacao-dados-iniciais.md`
+- [x] T8 · `docs/operacao-dados-iniciais.md`
       atende: operação em produção (passos do Gabriel)
       verifico assim: leitura; cada passo diz quem executa e como conferir
