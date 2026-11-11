@@ -18,19 +18,19 @@ Uma tarefa por vez, um commit por tarefa. T1 a T4 API; T5 a T9 front.
       atende: CA-08, CA-09, CA-10
       verifico assim: supertest: 401, 400, isolamento entre tenants, mesma lista para os dois papéis
 
-- [ ] T5 · Regenerar cliente orval e hook `useEquipamentos`
+- [x] T5 · Regenerar cliente orval e hook `useEquipamentos`
       atende: base do front
       verifico assim: `npm run gen:api` sem diff pendente; build passa
 
-- [ ] T6 · Card com pill, detalhe e rótulos de botão
+- [x] T6 · Card com pill, detalhe e rótulos de botão
       atende: CA-12, CA-15, CA-16, CA-19
       verifico assim: teste por situação; no navegador, bate com o layout 5.2
 
-- [ ] T7 · Cabeçalho, busca e chips de filtro
+- [x] T7 · Cabeçalho, busca e chips de filtro
       atende: CA-11, CA-13, CA-14
       verifico assim: digitar filtra na hora; chips são exclusivos; contagem bate com `totais`
 
-- [ ] T8 · Estados de carregando, erro e "Carregar mais"
+- [x] T8 · Estados de carregando, erro e "Carregar mais"
       atende: CA-17, CA-18
       verifico assim: API derrubada mostra o erro e "Tentar novamente" funciona
 
@@ -38,7 +38,7 @@ Uma tarefa por vez, um commit por tarefa. T1 a T4 API; T5 a T9 front.
       da prática: os 12 equipamentos oficiais com foto). Ter dois conjuntos de dados no seed
       confundiria o que vai para produção.
 
-- [ ] T10 · Foto e crédito (emenda da prática): `imagem_path` na tabela, `imagemUrl` na API,
+- [x] T10 · Foto e crédito (emenda da prática): `imagem_path` na tabela, `imagemUrl` na API,
       foto no card e "Fotos: Pixabay"
       atende: CA-20, CA-21, CA-22
       verifico assim: supertest com e sem foto; Vitest do card e do crédito
