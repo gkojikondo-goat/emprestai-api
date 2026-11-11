@@ -10,15 +10,15 @@ Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
       atende: CA-06
       verifico assim: teste falha se a senha da turma ou um JWT `service_role` aparecer
 
-- [ ] T3 · Skill: SKILL.md, references e `lib.mjs`
+- [x] T3 · Skill: SKILL.md, references e `lib.mjs`
       atende: base de CA-07 a CA-10
       verifico assim: testes das regras puras (origem, tags, conferência de JPEG)
 
-- [ ] T4 · `preparar.mjs` e `verificar.mjs`
+- [x] T4 · `preparar.mjs` e `verificar.mjs`
       atende: CA-08, CA-09
       verifico assim: processo contra Pixabay falso: só origens do Pixabay, tags e reprovadas descartadas
 
-- [ ] T5 · `enviar.mjs`
+- [x] T5 · `enviar.mjs`
       atende: CA-10
       verifico assim: processo contra Storage falso: upsert, recusa fora de 800×600, exige a chave
 
