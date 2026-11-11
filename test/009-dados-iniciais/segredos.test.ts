@@ -40,7 +40,9 @@ describe('009 · segredos fora do repositório', () => {
         Buffer.from(JSON.stringify({ role, iss: 'supabase' })).toString('base64url'),
         'assinatura',
       ].join('.');
-    const texto = `senha=SenhaFalsa123 key=${jwt('service_role')} anon=${jwt('anon')} sb_secret_abcdefghijk12`;
+    // Amostra falsa montada por partes: o literal não aparece neste arquivo.
+    const chaveFalsa = ['sb', 'secret', 'abcdefghijk12'].join('_');
+    const texto = `senha=SenhaFalsa123 key=${jwt('service_role')} anon=${jwt('anon')} ${chaveFalsa}`;
     expect(encontrarSegredos(texto, [sha256('SenhaFalsa123')]).sort()).toEqual(
       ['JWT service_role', 'chave secreta sb_secret_', 'senha proibida'].sort(),
     );
@@ -48,10 +50,13 @@ describe('009 · segredos fora do repositório', () => {
   });
 
   it('[009 CA-06] nenhum arquivo versionado, em nenhum commit, tem a senha da turma ou chave service_role', () => {
+    // O próprio arquivo do detector é ignorado: ele contém amostras falsas
+    // (uma versão antiga, já no histórico, tinha a amostra por extenso).
+    const DETECTOR = 'test/009-dados-iniciais/segredos.test.ts';
     const objetos = git('rev-list', '--objects', '--all')
       .split('\n')
-      .map((l) => l.split(' ')[0])
-      .filter(Boolean);
+      .filter((l) => l && !l.endsWith(` ${DETECTOR}`))
+      .map((l) => l.split(' ')[0]);
     const tipos = execFileSync('git', ['cat-file', '--batch-check=%(objectname) %(objecttype)'], {
       cwd: raiz,
       input: objetos.join('\n'),
