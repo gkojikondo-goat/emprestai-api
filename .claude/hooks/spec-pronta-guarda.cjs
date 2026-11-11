@@ -71,10 +71,15 @@ try {
     const cmd = String(dados.command || '').trim();
     // git add/commit/status/log/diff/show são liberados: o agente principal
     // precisa commitar a rodada que o verificador gravou.
+    // Leitura (ls, cat, grep, git log...) é livre; só comando que escreve é barrado.
     const semCd = cmd.replace(/^cd\s+\S+\s*&&\s*/, '');
     const gitSemEscrita =
       /^git (add|commit|status|log|diff|show)\s/.test(semCd) && !/[;|>`]|&&|\$\(/.test(semCd);
-    if (!ehVerificador && !gitSemEscrita && /verificacao[\/\\]|Implementada/i.test(cmd)) {
+    const escreve =
+      /(^|[^0-9&])>{1,2}(?!&)|\b(rm|mv|cp|tee|touch|truncate|install|ln)\b|\bsed\b[^|;]*\s-i|\bperl\b[^|;]*\s-i|\b(node|node\.exe|python3?|deno|bun)\b\s+-e|\b(Set-Content|Add-Content|Out-File|Remove-Item|Move-Item|Copy-Item|New-Item|Rename-Item|Clear-Content)\b|\bgit\s+(checkout|restore|rm|mv|stash|reset|apply)\b/i.test(
+        cmd,
+      );
+    if (!ehVerificador && !gitSemEscrita && escreve && /verificacao[\/\\]|Implementada/i.test(cmd)) {
       bloquear('registro do verificador e marca "Implementada" não se alteram por shell');
     }
     process.exit(0);
