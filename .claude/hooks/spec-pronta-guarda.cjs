@@ -72,12 +72,17 @@ try {
     // git add/commit/status/log/diff/show são liberados: o agente principal
     // precisa commitar a rodada que o verificador gravou.
     // Leitura (ls, cat, grep, git log...) é livre; só comando que escreve é barrado.
-    const semCd = cmd.replace(/^cd\s+\S+\s*&&\s*/, '');
+    // Texto entre aspas e corpo de heredoc (ex.: mensagem de commit com
+    // "<email>") não é comando: sai antes de procurar redirecionamento.
+    const semTexto = cmd
+      .replace(/<<-?\s*'?(\w+)'?[\s\S]*?\n\1\s*$/m, '')
+      .replace(/'[^']*'|"(?:[^"\\]|\\.)*"/g, "''");
+    const semCd = semTexto.replace(/^cd\s+\S+\s*&&\s*/, '');
     const gitSemEscrita =
       /^git (add|commit|status|log|diff|show)\s/.test(semCd) && !/[;|>`]|&&|\$\(/.test(semCd);
     const escreve =
       /(^|[^0-9&])>{1,2}(?!&)|\b(rm|mv|cp|tee|touch|truncate|install|ln)\b|\bsed\b[^|;]*\s-i|\bperl\b[^|;]*\s-i|\b(node|node\.exe|python3?|deno|bun)\b\s+-e|\b(Set-Content|Add-Content|Out-File|Remove-Item|Move-Item|Copy-Item|New-Item|Rename-Item|Clear-Content)\b|\bgit\s+(checkout|restore|rm|mv|stash|reset|apply)\b/i.test(
-        cmd,
+        semTexto,
       );
     if (!ehVerificador && !gitSemEscrita && escreve && /verificacao[\/\\]|Implementada/i.test(cmd)) {
       bloquear('registro do verificador e marca "Implementada" não se alteram por shell');
