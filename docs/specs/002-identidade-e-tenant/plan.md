@@ -10,8 +10,8 @@ Deriva de docs/specs/002-identidade-e-tenant/spec.md.
 
 ## Bibliotecas novas (todas previstas no ADR-001)
 
-- API: `jose` para validar o JWT pela JWKS (**não está no ADR-001: precisa de aprovação**;
-  alternativa: `@nestjs/jwt` + `jwks-rsa`), `@casl/ability`, `nestjs-zod`, `zod`.
+- API: `jose` 5.x para validar o JWT pela JWKS (fora do ADR-001; decidida no ADR-007,
+  alternativas descartadas lá), `@casl/ability`, `nestjs-zod`, `zod`.
 - Front: `orval`, `@tanstack/react-query`.
 
 ## Modelo de dados proposto (P13 — aguardando aprovação)

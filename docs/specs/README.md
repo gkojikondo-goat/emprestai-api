@@ -37,8 +37,8 @@ Implementar na ordem da tabela. Uma tarefa por vez (rules/restrictions.md).
 
 O AGENTS.md manda listar o que o PRD e os ADRs deixaram ambíguo e esperar. As specs foram
 escritas com a **proposta** abaixo. **Todas as propostas P1 a P13 foram confirmadas** e as specs
-002 a 008 estão com **Status: aprovada**. Resalva: a biblioteca `jose` (spec 002) não está no ADR-001 e
-ainda precisa de aprovação própria.
+002 a 008 estão com **Status: aprovada**. A biblioteca `jose` (spec 002), que não estava no
+ADR-001, foi decidida no ADR-007.
 
 | # | Pergunta | Proposta usada nas specs | Afeta |
 |---|---|---|---|
