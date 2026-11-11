@@ -62,7 +62,12 @@ da pessoa e expõe isso em `GET /v1/me`. O front usa essa resposta para saber qu
   uma área. Fale com Operações." e o botão Sair.
 - CA-14 · [front] Se qualquer chamada responde 401, a sessão é encerrada e a pessoa volta ao Login.
 - CA-15 · [front] O cliente da API é gerado do `openapi.json` publicado pela API; o CI do front falha
-  se o cliente gerado divergir dele.
+  se o cliente gerado divergir dele. **Lacuna decidida (2026-11-10):** "publicado" é o
+  `openapi.json` versionado na raiz do emprestai-api (o CI da API garante que ele bate com o código
+  e o publica como artefato). O front guarda uma cópia, trazida por `npm run sync:api`. O
+  `npm run check:api` falha se o cliente gerado divergir da cópia (no CI e localmente) e, quando o
+  emprestai-api está ao lado, também se a cópia divergir do arquivo da API. Baixar o artefato no CI
+  do front foi descartado: exigiria um token entre repositórios privados.
 
 ## Fora de escopo / não decidido
 

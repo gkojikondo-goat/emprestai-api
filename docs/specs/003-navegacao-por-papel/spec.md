@@ -33,6 +33,9 @@ Operações. As telas de negócio entram nas specs seguintes; esta entrega o esq
 7. A tela Início provisória da spec 001 deixa de existir (P11): o destino pós-login passa a ser
    `/catalogo`, e o status da API sai da interface.
 8. A Vercel precisa servir o `index.html` para qualquer rota (rewrite de SPA).
+9. **Lacuna decidida (2026-11-10, apontada pelo verificador):** rota desconhecida com sessão leva
+   a `/catalogo`; sem sessão, a `/login` (CA-01). Alternativa descartada: página 404 própria, que
+   o layout não desenha.
 
 ## Critérios de aceitação
 
@@ -46,9 +49,11 @@ Operações. As telas de negócio entram nas specs seguintes; esta entrega o esq
   iniciais do nome, nome e "Sair".
 - CA-08 · [front] Clicar em "Sair" encerra a sessão e leva a `/login`.
 - CA-09 · [front] Recarregar a página em `/meus-emprestimos` (e nas demais rotas) com sessão ativa
-  mantém a rota e não dá 404 na Vercel.
+  mantém a rota e não dá 404 na Vercel. Prova: teste do `vercel.json` **e** conferência no link de
+  produção (rules/tests.md). Conferido no link de produção: **pendente** (depende do deploy).
 - CA-10 · [front] `/catalogo`, `/meus-emprestimos`, `/operacoes` e `/equipamentos` mostram o título
   da página e "Em construção." até a spec correspondente ser implementada.
+- CA-13 · [front] Com sessão, uma rota desconhecida leva a `/catalogo` (regra 9).
 - CA-11 · [front] O componente de Toast aparece centralizado, a 28px da base, e some sozinho em 2600ms.
 - CA-12 · [front] Enquanto o papel ainda não foi carregado de `/v1/me`, a barra não mostra abas de
   Operações (nunca "pisca" Operações para Colaborador).

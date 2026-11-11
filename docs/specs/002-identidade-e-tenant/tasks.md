@@ -30,14 +30,14 @@ Uma tarefa por vez, um commit por tarefa. T1 a T7 são da API; T8 a T10 são do 
       atende: CA-15 (lado API)
       verifico assim: o arquivo existe no artefato e lista `/v1/me`
 
-- [ ] T8 · Cliente orval, fetcher com token e script `gen:api`
+- [x] T8 · Cliente orval, fetcher com token e script `gen:api`
       atende: CA-15
       verifico assim: alterar o `openapi.json` sem regenerar faz o CI do front falhar
 
-- [ ] T9 · Hook `useMe` e tratamento de 401 (sai da sessão)
+- [x] T9 · Hook `useMe` e tratamento de 401 (sai da sessão)
       atende: CA-12, CA-14
       verifico assim: teste Vitest; no navegador, token inválido leva ao Login
 
-- [ ] T10 · Estado 403 na interface
+- [x] T10 · Estado 403 na interface
       atende: CA-13
       verifico assim: usuário sem `memberships` vê a mensagem e consegue sair
