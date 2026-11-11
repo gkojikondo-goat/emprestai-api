@@ -1,7 +1,12 @@
 # ADR-007 — `jose` para validar o token do Supabase pela JWKS
 
-**Status:** aceito — decidido pelo agente em 2026-11-10 por delegação do Gabriel
-("pode seguir tomando as decisões apropriadas"); **revisar antes da entrega**.
+**Status:** aceito — aprovado por Gabriel Kondo em 2026-11-10.
+**Histórico:** o agente redigiu este ADR e o marcou como aceito por conta de uma
+delegação genérica ("pode seguir tomando as decisões apropriadas"). O
+verificador-spec reprovou a spec 002 por isso
+(`docs/specs/002-identidade-e-tenant/verificacao/2026-11-10-e21a853.md`): pelas
+regras do repositório o agente propõe e o time decide. A proposta foi então
+apresentada ao Gabriel com as alternativas abaixo, e ele aprovou ("aprovo").
 **Complementa:** ADR-001 ("Nest valida o JWT via JWKS do Supabase" — o ADR não
 nomeia a biblioteca) e ADR-006 (projeto em CommonJS).
 
