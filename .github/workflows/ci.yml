@@ -1,0 +1,32 @@
+# CI da API (ADR-001: um workflow por repositório).
+# Roda os mesmos checks de rules/checks.md e publica o openapi.json como artefato
+# (spec 002 T7). A migration em produção (AZ-10) ainda não está aqui: exige o
+# segredo do banco no GitHub e é decisão de operação, fora desta prática.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      # Testcontainers usa o Docker do runner; nenhum teste fala com o Supabase.
+      - run: npm test
+      - name: openapi.json gerado bate com o versionado
+        run: |
+          node dist/openapi.js
+          git diff --exit-code openapi.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: openapi
+          path: openapi.json

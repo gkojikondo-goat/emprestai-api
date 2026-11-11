@@ -26,7 +26,7 @@ Uma tarefa por vez, um commit por tarefa. T1 a T7 são da API; T8 a T10 são do 
       atende: CA-03, CA-11
       verifico assim: supertest com token válido devolve os campos; log mostra `request_id` e `tenant_id`
 
-- [ ] T7 · `openapi.json` gerado dos schemas Zod e publicado como artefato do CI
+- [x] T7 · `openapi.json` gerado dos schemas Zod e publicado como artefato do CI
       atende: CA-15 (lado API)
       verifico assim: o arquivo existe no artefato e lista `/v1/me`
 

@@ -14,6 +14,7 @@
     "typecheck": "prisma generate && tsc --noEmit -p tsconfig.json",
     "test": "jest",
     "seed": "node prisma/seed.ts",
+    "openapi": "npm run build && node dist/openapi.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {
