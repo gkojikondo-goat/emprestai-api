@@ -2,7 +2,7 @@
 
 Uma tarefa por vez, um commit por tarefa. Tudo no emprestai-api.
 
-- [ ] T1 · `prisma/dados/equipamentos.json` e seed de equipamentos e do professor
+- [x] T1 · `prisma/dados/equipamentos.json` e seed de equipamentos e do professor
       atende: CA-01, CA-02, CA-03, CA-04 (lado do banco), CA-05
       verifico assim: seed três vezes contra Testcontainers com schema `auth` mínimo
 

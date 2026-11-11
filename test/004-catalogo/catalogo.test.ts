@@ -2,7 +2,6 @@ import { randomUUID } from 'node:crypto';
 import { Client } from 'pg';
 import request from 'supertest';
 import { subirApp } from '../support/app';
-import { rodarSeed } from '../support/seed';
 
 const STORAGE = 'https://teste.supabase.co/storage/v1/object/public/equipamentos';
 
@@ -37,10 +36,10 @@ describe('004 · GET /v1/equipamentos', () => {
 
   beforeAll(async () => {
     ctx = await subirApp();
-    rodarSeed(ctx.url);
     db = new Client({ connectionString: ctx.url });
     await db.connect();
-    tenantA = (await db.query(`SELECT id FROM tenants WHERE slug = 'suporte_ti'`)).rows[0].id;
+    // Tenant próprio: o seed (spec 009) põe os 12 equipamentos da prática no suporte_ti.
+    tenantA = (await db.query(`INSERT INTO tenants (slug, nome) VALUES ('a', 'A') RETURNING id`)).rows[0].id;
     tenantB = (await db.query(`INSERT INTO tenants (slug, nome) VALUES ('b', 'B') RETURNING id`)).rows[0].id;
     tenantPag = (await db.query(`INSERT INTO tenants (slug, nome) VALUES ('pag', 'Pag') RETURNING id`)).rows[0].id;
     await db.query(
@@ -202,7 +201,6 @@ describe('004 · tabelas equipamentos e emprestimos', () => {
 
   beforeAll(async () => {
     ctx = await subirApp();
-    rodarSeed(ctx.url);
     db = new Client({ connectionString: ctx.url });
     await db.connect();
   });
@@ -213,7 +211,7 @@ describe('004 · tabelas equipamentos e emprestimos', () => {
   });
 
   it('dois empréstimos abertos do mesmo equipamento são recusados pelo banco', async () => {
-    const t = (await db.query(`SELECT id FROM tenants WHERE slug = 'suporte_ti'`)).rows[0].id;
+    const t = (await db.query(`INSERT INTO tenants (slug, nome) VALUES ('x', 'X') RETURNING id`)).rows[0].id;
     const e = (
       await db.query(
         `INSERT INTO equipamentos (tenant_id, nome, categoria, situacao) VALUES ($1, 'X', 'cabo', 'disponivel') RETURNING id`,
