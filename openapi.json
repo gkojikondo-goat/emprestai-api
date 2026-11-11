@@ -1,6 +1,42 @@
 {
   "components": {
     "schemas": {
+      "EmprestimoCriadoDto_Output": {
+        "additionalProperties": false,
+        "properties": {
+          "devolverAte": {
+            "description": "AAAA-MM-DD",
+            "type": "string"
+          },
+          "equipamentoId": {
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "type": "string"
+          },
+          "retiradaEm": {
+            "description": "AAAA-MM-DD",
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "equipamentoId",
+          "userId",
+          "retiradaEm",
+          "devolverAte"
+        ],
+        "type": "object"
+      },
       "ListaEquipamentosDto_Output": {
         "additionalProperties": false,
         "properties": {
@@ -170,6 +206,95 @@
           "papel"
         ],
         "type": "object"
+      },
+      "MeusEmprestimosDto_Output": {
+        "additionalProperties": false,
+        "properties": {
+          "bloqueado": {
+            "type": "boolean"
+          },
+          "itens": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "devolverAte": {
+                  "description": "AAAA-MM-DD",
+                  "type": "string"
+                },
+                "emAtraso": {
+                  "type": "boolean"
+                },
+                "equipamento": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                      "type": "string"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "patrimonio": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "nome",
+                    "patrimonio"
+                  ],
+                  "type": "object"
+                },
+                "id": {
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                  "type": "string"
+                },
+                "retiradaEm": {
+                  "description": "AAAA-MM-DD",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "equipamento",
+                "retiradaEm",
+                "devolverAte",
+                "emAtraso"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "limite": {
+            "maximum": 9007199254740991,
+            "minimum": -9007199254740991,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "itens",
+          "limite",
+          "bloqueado"
+        ],
+        "type": "object"
+      },
+      "SolicitarEmprestimoDto": {
+        "properties": {
+          "equipamentoId": {
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "equipamentoId"
+        ],
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -188,6 +313,70 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/v1/emprestimos": {
+      "post": {
+        "operationId": "solicitarEmprestimo",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitarEmprestimoDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmprestimoCriadoDto_Output"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Pedir um equipamento disponível",
+        "tags": [
+          "emprestimos"
+        ]
+      }
+    },
+    "/v1/emprestimos/meus": {
+      "get": {
+        "operationId": "meusEmprestimos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeusEmprestimosDto_Output"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Empréstimos em aberto de quem chama",
+        "tags": [
+          "emprestimos"
+        ]
+      }
+    },
     "/v1/equipamentos": {
       "get": {
         "operationId": "listarEquipamentos",

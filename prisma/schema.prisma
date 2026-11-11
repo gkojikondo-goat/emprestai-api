@@ -24,6 +24,7 @@ model Tenant {
   memberships  Membership[]
   equipamentos Equipamento[]
   emprestimos  Emprestimo[]
+  auditoria    Auditoria[]
 
   @@map("tenants")
 }
@@ -77,4 +78,20 @@ model Emprestimo {
 
   @@index([tenantId, userId])
   @@map("emprestimos")
+}
+
+// Spec 006 (emenda: nasce aqui em vez da 005). Append-only por trigger em SQL bruto.
+model Auditoria {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  atorId      String   @map("ator_id") @db.Uuid
+  acao        String
+  recursoTipo String   @map("recurso_tipo")
+  recursoId   String   @map("recurso_id") @db.Uuid
+  dados       Json?
+  criadoEm    DateTime @default(now()) @map("criado_em") @db.Timestamptz(6)
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId, criadoEm(sort: Desc)])
+  @@map("auditoria")
 }

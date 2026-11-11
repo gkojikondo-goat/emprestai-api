@@ -5,6 +5,7 @@ import pino from 'pino';
 import { LOGGER, RequestContextMiddleware } from './common/request-context';
 import { ConfigModule } from './config/config.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { EmprestimosModule } from './modules/emprestimos/emprestimos.module';
 import { EquipamentosModule } from './modules/equipamentos/equipamentos.module';
 import { HealthModule } from './modules/health/health.module';
 import { MeModule } from './modules/me/me.module';
@@ -26,6 +27,7 @@ class LogModule {}
     HealthModule,
     MeModule,
     EquipamentosModule,
+    EmprestimosModule,
   ],
   providers: [
     // Zod valida a entrada e serializa a saída com o mesmo schema do OpenAPI (ADR-001).

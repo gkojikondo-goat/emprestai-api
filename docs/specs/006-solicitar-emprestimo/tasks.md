@@ -2,23 +2,23 @@
 
 Uma tarefa por vez, um commit por tarefa. T1 a T5 API; T6 a T9 front.
 
-- [ ] T1 · Helper de datas (hoje em São Paulo, mais 14 dias)
+- [x] T1 · Helper de datas (hoje em São Paulo, mais 14 dias)
       atende: CA-02
       verifico assim: teste unitário com relógio fixo, incluindo virada de dia perto da meia-noite
 
-- [ ] T2 · Service de criação: itens indisponíveis e manutenção
+- [x] T2 · Service de criação: itens indisponíveis e manutenção
       atende: CA-01, CA-03, CA-07 (parte sequencial), CA-08, CA-09
       verifico assim: Testcontainers: item disponível, emprestado, em manutenção e inexistente
 
-- [ ] T3 · Limite de 3 e bloqueio por atraso, com trava por pessoa
+- [x] T3 · Limite de 3 e bloqueio por atraso, com trava por pessoa
       atende: CA-04, CA-05, CA-06
       verifico assim: teste com requisições paralelas: nunca 4 em aberto; prazo igual a hoje não bloqueia
 
-- [ ] T4 · Concorrência no mesmo item
+- [x] T4 · Concorrência no mesmo item
       atende: CA-07
       verifico assim: dois pedidos simultâneos dão um 201 e um 409
 
-- [ ] T5 · Controller, `GET /v1/emprestimos/meus`, auditoria e testes de API
+- [x] T5 · Controller, `GET /v1/emprestimos/meus`, auditoria e testes de API
       atende: CA-10, CA-11, CA-12, CA-13
       verifico assim: supertest: 401, corpo com `userId` ignorado, isolamento, linha de auditoria criada
 
